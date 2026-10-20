@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "category": "Streetwear",
+    "imageUrl": "https://i.pinimg.com/1200x/d0/c3/13/d0c3139c737088e87123a45054708f0f.jpg",
+    "description": "Oversized vintage graphic tee with baggy cargo pants."
+  },
+  {
+    "id": 2,
+    "category": "Streetwear",
+    "imageUrl": "https://i.pinimg.com/1200x/40/18/ce/4018ce7d556adac970b59319a495e145.jpg",
+    "description": "Black utility vest over a white hoodie."
+  },
+  {
+    "id": 3,
+    "category": "Streetwear",
+    "imageUrl": "https://i.pinimg.com/736x/81/95/60/819560a3478f41837ad6964551c0c0ed.jpg",
+    "description": "Chunky sneakers paired with distressed denim."
+  },
+  {
+    "id": 4,
+    "category": "Streetwear",
+    "imageUrl": "https://i.pinimg.com/736x/ac/fe/e7/acfee78cb3d430faee56571c5a9417c7.jpg",
+    "description": "Neon windbreaker jacket with reflective details."
+  },
+  {
+    "id": 5,
+    "category": "Streetwear",
+    "imageUrl": "https://i.pinimg.com/1200x/54/f5/c7/54f5c7986a9cfccc88459876ba40b243.jpg",
+    "description": "Bucket hat and a layered flannel shirt look."
+  },
+  {
+    "id": 6,
+    "category": "Streetwear",
+    "imageUrl": "https://i.pinimg.com/736x/1d/dd/4a/1ddd4adbd600f662f1f6079dc3fed1c4.jpg",
+    "description": "Techwear pants with multiple straps and pockets."
+  },
+  {
+    "id": 7,
+    "category": "Formal Wear",
+    "imageUrl": "https://i.pinimg.com/736x/b0/81/ad/b081ad62e8ad6ff3b1088241445bf5bf.jpg",
+    "description": "Classic navy blue tailored two-piece suit."
+  },
+  {
+    "id": 8,
+    "category": "Formal Wear",
+    "imageUrl": "https://i.pinimg.com/736x/03/bd/e4/03bde4ecd8eafea3a01569833a463afc.jpg",
+    "description": "Charcoal grey blazer with a crisp white dress shirt."
+  },
+  {
+    "id": 9,
+    "category": "Formal Wear",
+    "imageUrl": "https://i.pinimg.com/736x/5e/7a/ec/5e7aecf14039bdbaf0535cf0a1f5ad6c.jpg",
+    "description": "Slim-fit tuxedo with a black silk bow tie."
+  },
+  {
+    "id": 10,
+    "category": "Formal Wear",
+    "imageUrl": "https://i.pinimg.com/736x/94/bc/0d/94bc0d715ce97208a3f75638fc7a3024.jpg",
+    "description": "Brown leather oxfords with matching dress belt."
+  },
+  {
+    "id": 11,
+    "category": "Formal Wear",
+    "imageUrl": "https://i.pinimg.com/736x/bb/76/ef/bb76ef607103a52dcde0c1111ae39406.jpg",
+    "description": "Double-breasted pin-stripe suit."
+  },
+  {
+    "id": 12,
+    "category": "Formal Wear",
+    "imageUrl": "https://i.pinimg.com/736x/25/bf/05/25bf054ffd4669494140c229c7c6557d.jpg",
+    "description": "Elegant silk tie with subtle geometric patterns."
+  },
+  {
+    "id": 13,
+    "category": "Activewear",
+    "imageUrl": "https://i.pinimg.com/736x/cd/74/23/cd74230cffeb9d1e6486d0c3d7c85e45.jpg",
+    "description": "Breathable running shorts with compression tights."
+  },
+  {
+    "id": 14,
+    "category": "Activewear",
+    "imageUrl": "https://i.pinimg.com/736x/94/b5/28/94b52811a1c3ff99f2d0fd18fad42ce7.jpg",
+    "description": "Seamless moisture-wicking workout t-shirt."
+  },
+  {
+    "id": 15,
+    "category": "Activewear",
+    "imageUrl": "https://i.pinimg.com/736x/64/30/37/6430372fb75507946735000f712b88e0.jpg",
+    "description": "Lightweight track jacket for morning runs."
+  },
+  {
+    "id": 16,
+    "category": "Activewear",
+    "imageUrl": "https://i.pinimg.com/736x/f6/3d/bc/f63dbc676a6271c16204aa0f75fa03cd.jpg",
+    "description": "High-waisted yoga leggings in olive green."
+  },
+  {
+    "id": 17,
+    "category": "Activewear",
+    "imageUrl": "https://i.pinimg.com/736x/be/30/1e/be301e587388b5d5d77c425cc503ea80.jpg",
+    "description": "Cushioned training shoes for weightlifting."
+  },
+  {
+    "id": 18,
+    "category": "Activewear",
+    "imageUrl": "https://i.pinimg.com/1200x/e3/13/a6/e313a68a4e99d375cf528c5bcd953c25.jpg",
+    "description": "Sleeveless gym hoodie with drop armholes."
+  },
+  {
+    "id": 19,
+    "category": "Winter Collection",
+    "imageUrl": "https://i.pinimg.com/1200x/c4/96/93/c496934d49db31995811fecd21008abd.jpg",
+    "description": "Heavy duty waterproof puffer jacket."
+  },
+  {
+    "id": 20,
+    "category": "Winter Collection",
+    "imageUrl": "https://i.pinimg.com/736x/7a/67/be/7a67be9d756251d0359e81551b7c7d99.jpg",
+    "description": "Chunky knit wool sweater in mustard yellow."
+  },
+  {
+    "id": 21,
+    "category": "Winter Collection",
+    "imageUrl": "https://i.pinimg.com/736x/70/b7/7b/70b77bea9305682dade9fc14ac3454ff.jpg",
+    "description": "Long camel overcoat with a cashmere scarf."
+  },
+  {
+    "id": 22,
+    "category": "Winter Collection",
+    "imageUrl": "https://i.pinimg.com/1200x/7c/80/6a/7c806a0f9b5bb9a9d91a9bbe49f1c63b.jpg",
+    "description": "Fleece-lined leather gloves."
+  },
+  {
+    "id": 23,
+    "category": "Winter Collection",
+    "imageUrl": "https://i.pinimg.com/736x/3a/45/0d/3a450d8400f3a807b06b3f30cae814b8.jpg",
+    "description": "Corduroy trousers paired with leather boots."
+  },
+  {
+    "id": 24,
+    "category": "Winter Collection",
+    "imageUrl": "https://i.pinimg.com/1200x/b1/58/20/b1582008b1423f304384706db8221e0d.jpg",
+    "description": "Thick beanie hat and matching neck warmer."
+  },
+  {
+    "id": 25,
+    "category": "Summer Casuals",
+    "imageUrl": "https://i.pinimg.com/736x/ba/d1/9b/bad19b38d6377ba1a2004487e6562fe3.jpg",
+    "description": "Short-sleeve linen button-up shirt."
+  },
+  {
+    "id": 26,
+    "category": "Summer Casuals",
+    "imageUrl": "https://i.pinimg.com/1200x/28/c5/3e/28c53edefe3b0c4ee0090297c93be248.jpg",
+    "description": "Light wash denim shorts."
+  },
+  {
+    "id": 27,
+    "category": "Summer Casuals",
+    "imageUrl": "https://i.pinimg.com/736x/64/4b/47/644b47149b2dfd4d1707006f0a882289.jpg",
+    "description": "Classic white canvas slip-on shoes."
+  },
+  {
+    "id": 28,
+    "category": "Summer Casuals",
+    "imageUrl": "https://i.pinimg.com/736x/c9/bf/08/c9bf082f843d756d83eac8002e7743f3.jpg",
+    "description": "Floral print camp collar shirt."
+  },
+  {
+    "id": 29,
+    "category": "Summer Casuals",
+    "imageUrl": "https://i.pinimg.com/736x/99/5b/9f/995b9f2e8fe2eeb7e6fa7a8316486f3c.jpg",
+    "description": "Khaki chino shorts with a woven belt."
+  },
+  {
+    "id": 30,
+    "category": "Summer Casuals",
+    "imageUrl": "https://i.pinimg.com/736x/f6/e2/f0/f6e2f021bd3ac178d8fb18b430888770.jpg",
+    "description": "Polarized sunglasses and a classic polo shirt."
+  }
+]
