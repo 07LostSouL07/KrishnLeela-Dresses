@@ -12,15 +12,22 @@ export default function Footer() {
           {/* Brand Manifesto */}
           <div className="md:col-span-5 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2 text-luxury-gold mb-3">
-                <Sparkles className="w-4 h-4" />
-                <span className="text-xs uppercase tracking-[0.25em] font-sans font-medium">
-                  Costumes & Stage Wear
-                </span>
+              <div className="flex items-center gap-3.5 mb-3">
+                <div className="w-11 h-11 rounded-full border border-luxury-gold/50 bg-white overflow-hidden shadow-sm shrink-0 ring-1 ring-luxury-gold/30">
+                  <img src="/Logo.png" alt="KrishnLeela Dresses Logo" className="w-full h-full object-cover object-center" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5 text-luxury-gold">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span className="text-[11px] uppercase tracking-[0.25em] font-sans font-medium">
+                      Costumes & Stage Wear
+                    </span>
+                  </div>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-900 dark:text-stone-100 font-normal">
+                    KrishnLeela <span className="italic text-luxury-gold">Dresses</span>
+                  </h4>
+                </div>
               </div>
-              <h4 className="font-serif text-2xl sm:text-3xl text-stone-900 dark:text-stone-100 font-normal">
-                KrishnLeela <span className="italic text-luxury-gold">Dresses</span>
-              </h4>
               <p className="mt-3 text-stone-600 dark:text-stone-400 text-sm font-sans font-light leading-relaxed max-w-sm">
                 Providing high-quality character costumes, crafting original, handcrafted character costumes and divine attire with our own in-house creativity. Custom-tailored to bring your exact vision to life for every stage, competition, and celebration.
               </p>
@@ -49,7 +56,7 @@ export default function Footer() {
                   <a href="tel:+919827815992" className="hover:text-luxury-gold transition-colors">
                     98278 15992
                   </a>
-                  <span className="text-stone-400 text-xs hidden sm:inline">&bull;</span>
+                  <span className="text-stone-400 text-xs sm:inline">&bull;</span>
                   <a href="tel:+917803904356" className="hover:text-luxury-gold transition-colors">
                     78039 04356
                   </a>

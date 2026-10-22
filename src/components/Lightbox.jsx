@@ -31,6 +31,11 @@ export default function Lightbox({
   const [imageSrc, setImageSrc] = useState(item?.imageUrl || "");
   const [isImageLoading, setIsImageLoading] = useState(true);
 
+  // Touch swipe coordinates for mobile navigation
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 45;
+
   // Sync image source whenever item changes
   useEffect(() => {
     if (item) {
@@ -61,6 +66,39 @@ export default function Lightbox({
     };
   }, []);
 
+  // Touch swipe handlers
+  const handleTouchStart = (e) => {
+    if (isZoomed) return; // Allow panning if zoomed
+    setTouchEnd(null);
+    setTouchStart({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY,
+    });
+  };
+
+  const handleTouchMove = (e) => {
+    if (isZoomed) return;
+    setTouchEnd({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY,
+    });
+  };
+
+  const handleTouchEnd = () => {
+    if (isZoomed || !touchStart || !touchEnd) return;
+    const distanceX = touchStart.x - touchEnd.x;
+    const distanceY = touchStart.y - touchEnd.y;
+    const isHorizontalSwipe = Math.abs(distanceX) > Math.abs(distanceY);
+
+    if (isHorizontalSwipe && Math.abs(distanceX) > minSwipeDistance) {
+      if (distanceX > 0 && hasNext) {
+        onNext();
+      } else if (distanceX < 0 && hasPrev) {
+        onPrev();
+      }
+    }
+  };
+
   if (!item) return null;
 
   const handleShare = () => {
@@ -81,23 +119,25 @@ export default function Lightbox({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-[#FAF8F5]/95 dark:bg-[#0A0A0C]/95 backdrop-blur-2xl text-stone-900 dark:text-stone-100 select-none overflow-hidden transition-colors duration-300"
+        transition={{ duration: 0.25 }}
+        className="fixed inset-0 z-50 flex flex-col bg-[#FAF8F5]/98 dark:bg-[#0A0A0C]/98 backdrop-blur-2xl text-stone-900 dark:text-stone-100 select-none overflow-hidden transition-colors duration-300"
       >
-        {/* Top Control Bar */}
-        <header className="absolute top-0 inset-x-0 h-20 px-6 sm:px-12 flex items-center justify-between z-30 bg-gradient-to-b from-[#FAF8F5]/90 via-[#FAF8F5]/60 to-transparent dark:from-black/90 dark:via-black/60 dark:to-transparent">
-          <div className="flex items-center gap-3">
-            <span className="font-serif text-lg tracking-wide text-luxury-gold font-light">
+        {/* Top Control Bar with safe padding and responsive spacing */}
+        <header className="absolute top-0 inset-x-0 h-16 sm:h-20 px-4 sm:px-8 lg:px-12 flex items-center justify-between z-30 bg-gradient-to-b from-[#FAF8F5]/95 via-[#FAF8F5]/70 to-transparent dark:from-black/95 dark:via-black/70 dark:to-transparent">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 mr-2">
+            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full overflow-hidden bg-white border border-luxury-gold/50 shadow-xs shrink-0 ring-1 ring-luxury-gold/20">
+              <img src="/Logo.png" alt="KrishnLeela Logo" className="w-full h-full object-cover object-center" />
+            </div>
+            <span className="font-serif text-base sm:text-lg tracking-wide text-luxury-gold font-light truncate">
               KrishnLeela
             </span>
-            <span className="text-stone-400 dark:text-stone-600">&bull;</span>
-            <span className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400">
-              Silhouette {String(currentIndex + 1).padStart(2, "0")} /{" "}
-              {String(totalItems).padStart(2, "0")}
+            <span className="text-stone-400 dark:text-stone-600 shrink-0">&bull;</span>
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 shrink-0 whitespace-nowrap">
+              Silhouette {String(currentIndex + 1).padStart(2, "0")} / {String(totalItems).padStart(2, "0")}
             </span>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             {/* Zoom Toggle */}
             <button
               onClick={() => setIsZoomed(!isZoomed)}
@@ -124,25 +164,25 @@ export default function Lightbox({
               )}
             </button>
 
-            {/* Close Button */}
+            {/* Close Button - firmly anchored inside the viewport without excess margin */}
             <button
               onClick={onClose}
               aria-label="Close full-screen lightbox"
-              className="p-2 sm:p-2.5 rounded-full bg-stone-200/80 hover:bg-stone-300/80 dark:bg-white/10 dark:hover:bg-white/20 text-stone-700 hover:text-stone-950 dark:text-stone-200 dark:hover:text-white border border-stone-300/60 dark:border-white/10 transition-colors ml-2"
+              className="p-2 sm:p-2.5 rounded-full bg-stone-200/80 hover:bg-stone-300/80 dark:bg-white/10 dark:hover:bg-white/20 text-stone-700 hover:text-stone-950 dark:text-stone-200 dark:hover:text-white border border-stone-300/60 dark:border-white/10 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
         </header>
 
-        {/* Prev & Next Floating Arrow Buttons */}
+        {/* Prev & Next Floating Arrow Buttons - positioned vertically aligned with image on mobile */}
         {hasPrev && (
           <button
             onClick={onPrev}
             aria-label="Previous look"
-            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-white/85 hover:bg-white dark:bg-black/70 dark:hover:bg-black/95 text-stone-700 hover:text-stone-950 dark:text-stone-300 dark:hover:text-white border border-stone-200 dark:border-white/10 shadow-lg backdrop-blur-md transition-all z-20 hover:scale-110"
+            className="absolute left-2.5 sm:left-6 lg:left-8 top-[28vh] sm:top-[30vh] lg:top-1/2 -translate-y-1/2 p-2.5 sm:p-3.5 lg:p-4 rounded-full bg-white/90 hover:bg-white dark:bg-black/75 dark:hover:bg-black/95 text-stone-700 hover:text-stone-950 dark:text-stone-300 dark:hover:text-white border border-stone-200/80 dark:border-white/10 shadow-lg backdrop-blur-md transition-all z-20 hover:scale-110 active:scale-95"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         )}
 
@@ -150,22 +190,27 @@ export default function Lightbox({
           <button
             onClick={onNext}
             aria-label="Next look"
-            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-white/85 hover:bg-white dark:bg-black/70 dark:hover:bg-black/95 text-stone-700 hover:text-stone-950 dark:text-stone-300 dark:hover:text-white border border-stone-200 dark:border-white/10 shadow-lg backdrop-blur-md transition-all z-20 hover:scale-110"
+            className="absolute right-2.5 sm:right-6 lg:right-8 top-[28vh] sm:top-[30vh] lg:top-1/2 -translate-y-1/2 p-2.5 sm:p-3.5 lg:p-4 rounded-full bg-white/90 hover:bg-white dark:bg-black/75 dark:hover:bg-black/95 text-stone-700 hover:text-stone-950 dark:text-stone-300 dark:hover:text-white border border-stone-200/80 dark:border-white/10 shadow-lg backdrop-blur-md transition-all z-20 hover:scale-110 active:scale-95"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         )}
 
-        {/* Central Display Area: Image & Metadata Panel */}
-        <div className="relative w-full h-full pt-20 pb-28 px-4 sm:px-16 flex flex-col lg:flex-row items-center justify-center gap-8 max-w-7xl mx-auto">
-          {/* Main Visual Frame */}
+        {/* Central Display Area: Image & Metadata Panel with vertical scroll on mobile */}
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          className="relative w-full h-full overflow-y-auto lg:overflow-hidden pt-16 sm:pt-20 pb-12 lg:pb-0 px-4 sm:px-8 lg:px-16 flex flex-col lg:flex-row items-center justify-start lg:justify-center gap-5 sm:gap-8 max-w-7xl mx-auto"
+        >
+          {/* Main Visual Frame - Prominent heroic size on mobile */}
           <div
-            className="relative flex-1 w-full h-full max-h-[70vh] lg:max-h-[82vh] flex items-center justify-center overflow-hidden cursor-zoom-in"
+            className="relative w-full h-[50vh] min-h-[300px] max-h-[58vh] sm:h-[55vh] lg:h-full lg:max-h-[82vh] lg:flex-1 flex items-center justify-center shrink-0 cursor-zoom-in"
             onClick={() => setIsZoomed(!isZoomed)}
           >
             {isImageLoading && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full border-2 border-stone-300 dark:border-stone-800 border-t-luxury-gold animate-spin" />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-stone-300 dark:border-stone-800 border-t-luxury-gold animate-spin" />
               </div>
             )}
 
@@ -181,17 +226,17 @@ export default function Lightbox({
                 scale: isZoomed ? 1.4 : 1,
                 opacity: isImageLoading ? 0 : 1,
               }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="max-h-full max-w-full object-contain rounded-lg shadow-2xl transition-transform duration-300"
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="max-h-full max-w-full object-contain rounded-xl shadow-xl dark:shadow-2xl transition-transform duration-300"
             />
           </div>
 
           {/* Minimalist Editorial Detail Card */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="w-full lg:w-96 bg-white/95 dark:bg-stone-900/90 border border-stone-200/90 dark:border-stone-800 backdrop-blur-xl p-6 sm:p-7 rounded-2xl flex flex-col justify-between shrink-0 shadow-xl dark:shadow-2xl transition-colors duration-300"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.05 }}
+            className="w-full max-w-md lg:w-96 bg-white/95 dark:bg-stone-900/90 border border-stone-200/90 dark:border-stone-800 backdrop-blur-xl p-5 sm:p-7 rounded-2xl flex flex-col justify-between shrink-0 shadow-xl dark:shadow-2xl transition-colors duration-300 mt-2 lg:mt-0 mb-8 lg:mb-0"
           >
             <div>
               {/* Category Pill & Atelier ID */}
@@ -211,12 +256,12 @@ export default function Lightbox({
               </h3>
 
               {/* Full Description with dynamic highlight */}
-              <p className="mt-4 text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans font-light leading-relaxed">
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans font-light leading-relaxed">
                 <HighlightText text={item.description} query={searchQuery} />
               </p>
 
               {/* Atelier Metadata Specifications */}
-              <div className="mt-6 pt-5 border-t border-stone-200 dark:border-stone-800 space-y-2 text-xs font-sans text-stone-500 dark:text-stone-400">
+              <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-stone-200 dark:border-stone-800 space-y-2 text-xs font-sans text-stone-500 dark:text-stone-400">
                 <div className="flex justify-between py-1 border-b border-stone-200/80 dark:border-stone-800/60">
                   <span>Making & Quality</span>
                   <span className="text-stone-800 dark:text-stone-200 font-medium">In-House Handcrafted</span>
@@ -236,7 +281,7 @@ export default function Lightbox({
             </div>
 
             {/* Bottom Actions */}
-            <div className="mt-6 pt-4">
+            <div className="mt-5 sm:mt-6 pt-3">
               {(() => {
                 const rawImg = imageSrc || item?.imageUrl || item?.image || '';
                 const fullImageUrl = rawImg.startsWith('http://') || rawImg.startsWith('https://')

@@ -24,7 +24,7 @@ export default function SearchFilter({
           <h2
             aria-label="राधे राधे"
             style={{ fontFamily: "'oeinakla paI oI Fsa', 'AMS Prashant', 'Ams Tushar', sans-serif" }}
-            className="font-ams text-6xl sm:text-6xl lg:text-8xl font-normal text-stone-900 dark:text-stone-100 tracking-wide select-none pt-2 sm:pt-4 mb-4"
+            className="font-ams pt-3 lg:pt-7 text-5xl sm:text-5xl lg:text-8xl font-normal text-stone-900 dark:text-stone-100 tracking-wide select-none overflow-visible"
           >
             ÚÓôY[e ÓôY[eÛ
           </h2>

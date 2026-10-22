@@ -17,33 +17,40 @@ export default function Header({ isDark, onToggleTheme, totalItems = 30 }) {
       </div>
 
       {/* Main Header Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 sm:h-24 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-12 h-20 sm:h-24 flex items-center justify-between gap-2">
         {/* Brand identity */}
-        <div className="flex items-center gap-3 sm:gap-4 group cursor-default">
+        <div className="flex items-center gap-2 sm:gap-4 group cursor-default min-w-0 overflow-visible">
           <motion.div
-            whileHover={{ rotate: 180, scale: 1.05 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-stone-300 dark:border-stone-700 flex items-center justify-center bg-stone-100 dark:bg-stone-900/80 shadow-sm text-luxury-gold group-hover:border-luxury-gold transition-colors"
+            whileHover={{ scale: 1.06 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-luxury-gold/50 bg-white overflow-hidden shadow-sm group-hover:border-luxury-gold group-hover:shadow-md transition-all shrink-0 ring-1 ring-luxury-gold/30"
           >
-            <Sparkles className="w-5 h-5 text-luxury-gold" strokeWidth={1.5} />
+            <img
+              src="/Logo.png"
+              alt="KrishnLeela Dresses Logo"
+              className="w-full h-full object-cover object-center"
+            />
           </motion.div>
 
-          <div className="flex items-baseline gap-2.5 sm:gap-3 mt-2 sm:mt-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 overflow-visible whitespace-nowrap">
             <span
               aria-label="KrishnLeela"
               style={{ fontFamily: "'oeinakla paI oI Fsa', 'AMS Prashant', 'Ams Tushar', sans-serif" }}
-              className="font-ams text-4xl sm:text-4xl lg:text-[44px] font-normal tracking-wide text-stone-900 dark:text-stone-50 select-none leading-none inline-block"
+              className="font-ams pt-3 lg:pt-7 text-3xl sm:text-3xl lg:text-[46px] font-normal tracking-wide text-stone-900 dark:text-stone-50 select-none leading-none inline-block overflow-visible shrink-0"
             >
-              Úk& VN[l[[ßl[[Û
+              Úk& VN[l[à[l[[Û
             </span>
-            <span className="font-serif text-2xl sm:text-3xl font-light italic text-luxury-gold tracking-tight inline-block">
-              Dresses
+            <span
+              style={{ fontFamily: "'oeinakla paI oI Fsa', 'AMS Prashant', 'Ams Tushar', sans-serif" }}
+              className="font-ams pt-3 lg:pt-7 text-3xl sm:text-3xl lg:text-[46px] font-normal tracking-wide text-luxury-gold dark:text-luxury-gold select-none leading-none inline-block overflow-visible shrink-0"
+            >
+              ÚD^es[es[Û
             </span>
           </div>
         </div>
 
         {/* Right side controls: collection counter + Dark/Light toggle */}
-        <div className="flex items-center gap-3 sm:gap-6">
+        <div className="flex items-center gap-3 sm:gap-6 shrink-0">
           <div className="hidden md:flex items-center gap-2 text-xs text-stone-500 dark:text-stone-400 font-sans">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse-subtle" />
             <span className="tracking-wider uppercase text-[11px]">
@@ -57,7 +64,7 @@ export default function Header({ isDark, onToggleTheme, totalItems = 30 }) {
           <button
             onClick={onToggleTheme}
             aria-label="Toggle dark mode"
-            className="group relative flex items-center justify-between w-16 h-8 sm:w-20 sm:h-9 px-1 rounded-full bg-stone-200 dark:bg-stone-800 border border-stone-300 dark:border-stone-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50"
+            className="group relative flex items-center justify-between w-16 h-8 sm:w-20 sm:h-9 px-1 rounded-full bg-stone-200 dark:bg-stone-800 border border-stone-300 dark:border-stone-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 shrink-0"
           >
             <span className="sr-only">Toggle theme</span>
             <div className="absolute inset-0 flex items-center justify-between px-2 text-stone-400 pointer-events-none">
